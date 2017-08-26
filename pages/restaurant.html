@@ -45,4 +45,12 @@
       </li>
     </ol>
   </div>
+  <div class="ingredients-list" ng-if="found">
+   <ol>
+     These non-veg dishes were found:
+     <li ng-repeat="i in found">
+        {{i}}
+     </li>
+   </ol>
+ </div>
 </div>

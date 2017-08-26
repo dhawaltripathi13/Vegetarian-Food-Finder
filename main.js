@@ -55,6 +55,7 @@ foodieApp.controller('loginController',function($scope,$location) {
 })
 foodieApp.controller('restaurantController',function($scope,$routeParams,$http) {
 	$scope.ingredients = [];
+	$scope.found = [];
 	$scope.getIngredients = function(url) {
 	var data = '{"inputs":[{"data":{"image":{"url":"' + url + '"}}}]}'
 		$http({
@@ -66,10 +67,19 @@ foodieApp.controller('restaurantController',function($scope,$routeParams,$http) 
 			},
 			'data': data
 		}).then(function (response) {
+				var non_veg = ['chicken','mutton','pork','beef','fish','bacon','egg'];
 				var ingredients = response.data.outputs[0].data.concepts;
 				for (var i =0;i < ingredients.length;i++) {
 				$scope.ingredients.push(ingredients[i].name);
 				}
+				for(i in non_veg){
+					for(j in ingredients){
+						if(non_veg[i]==ingredients[j].name)
+							{
+								$scope.found.push(ingredients[j].name)
+							}
+						}
+					}
 			}, function (xhr) {
 	        	console.log(xhr);
 	        })
@@ -87,12 +97,12 @@ foodieApp.controller('restaurantController',function($scope,$routeParams,$http) 
 	image: 'img/food1.jpg',
 	id:'1',
 	bestDish: {
-					name: 'THE HAMBURGER',
-					image: 'http://s.eatthis-cdn.com/media/images/ext/690257152/burger-king-ranked-hamburger.jpg'
+					name: 'Kofta-E-Kareem',
+					image: 'http://images.indulgexpress.com/uploads/user/imagelibrary/2017/3/24/original/SAN_0325.JPG'
 }
 },
 {
-name: 'Doon Rasoi',
+name: 'Marwaadi Bhojanalaya',
 address: 'B-2, Level 1, Block E , Inner Circle, Connaught Place',
 location: 'Connaught Place',
 category: 'Casual Dining, Bar',
@@ -102,7 +112,10 @@ cost: '2200',
 hours: '12 Noon to 1 AM (Mon-Sun)',
 image: 'img/food2.jpg',
 id: '2',
-
+bestDish: {
+				name: 'Shuddh Vaishnavi Bhojan',
+				image: 'http://sindhirasoi.com/wp-content/uploads/2008/02/daalchaawal.jpg'
+}
 }]
 	$scope.restaurant = restaurants[$routeParams.id - 1];
 })
