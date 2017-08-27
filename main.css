@@ -5,17 +5,21 @@
 }
 
 body {
-    background-color: #F3F3E8;
-    font-family: Helvetica, Arial, sans-serif;
+  background-image: url('http://cdn2.stylecraze.com/wp-content/uploads/2015/06/Foods-Rich-In-Oxygen.jpg');
+  /*font-family: Helvetica, Arial, sans-serif;*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .hero {
-    background-image: url('https://anandipaliwal.files.wordpress.com/2015/06/food-table-relisted.jpg');
-    background-size: cover;
+
+    font-family:Tempus Sans ITC;
+    font-weight: bolder;
     min-height: 300px;
     border-radius: 4px;
-    color: white;
-    font-size: 36px;
+    color: #ffffff;
+    font-size: 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,7 +67,7 @@ input.ng-invalid.ng-dirty {
 }
 .hero {
     margin-bottom: 2rem;
-    opacity: 0.65;
+    /*opacity: 0.65;*/
 }
 
 .restaurant {
